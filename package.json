@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "npm ci && cd frontend && npm ci && npm run build && cd ..",
     "production": "NODE_ENV=production node backend/server.js"
   },
   "keywords": [],
