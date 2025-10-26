@@ -3,7 +3,7 @@ import { BarChart, PlusCircle, ShoppingBasket } from "lucide-react";
 import { motion } from "framer-motion";
 import ProductsList from "../components/ProductsList";
 import AnalyticsTab from "../components/AnalyticsTab";
-import CreateProductForm from "../components/createProductForm";
+import CreateProductForm from "../components/CreateProductForm";
 import { useProductStore } from "../stores/useProductStore";
 import { useEffect } from "react";
 // this property of react is used to create tabs in the admin page
