@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
-    "build": "npm ci && cd frontend && npm ci && npm i -g vite@latest && npm run build && cd ..",
+    "build": "cd frontend && npm install --legacy-peer-deps && ./node_modules/.bin/vite build && cd ..",
     "production": "NODE_ENV=production node backend/server.js"
   },
   "keywords": [],
