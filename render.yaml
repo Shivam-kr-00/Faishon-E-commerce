@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: faishon-ecommerce
+    env: node
+    buildCommand: npm run build
+    startCommand: npm run production
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: MONGO_URI
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: ACCESS_TOKEN_SECRET
+        sync: false
+      - key: REFRESH_TOKEN_SECRET
+        sync: false
+      - key: UPSTASH_REDIS_URL
+        sync: false
+      - key: RAZOR_KEY_ID
+        sync: false
+      - key: RAZOR_KEY_SECRET
+        sync: false
