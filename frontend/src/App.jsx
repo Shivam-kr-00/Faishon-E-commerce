@@ -19,6 +19,7 @@ import OffersPage from "./pages/OffersPage";
 import OrdersPage from "./pages/OrdersPage";
 import Footer from "./components/Footer";
 import { useLocation } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
   const { getCartItems } = useCartStore();
@@ -49,7 +50,8 @@ function App() {
       <Navbar />
 
       {/* Your page content will be rendered here based on the URL */}
-      <main className="pt-14">
+      <ScrollToTop />
+      <main className="pt-16">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route

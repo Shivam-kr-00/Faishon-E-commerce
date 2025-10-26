@@ -9,6 +9,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const { user, logout } = useUserStore();
@@ -21,10 +22,40 @@ const Navbar = () => {
     navigate("/"); // Redirect to home after logout
   };
 
+  // --------------------- Hide/Show on Scroll ---------------------
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY && window.scrollY > 50) {
+        // Scrolling down and past 50px
+        setShow(false);
+      } else {
+        // Scrolling up
+        setShow(true);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
+  // ----------------------------------------------------------------
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800">
+    <header
+      className={`fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-transform duration-300 border-b border-emerald-800 ${
+        show ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="container mx-auto px-5 py-3">
-        <div className="flex flex-wrap justify-between items-center ">
+        <div className="flex flex-wrap justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
             <img
               src="https://res.cloudinary.com/dahpi68b7/image/upload/v1761414198/Screenshot_2025-10-25_230913_red3s0.png"
@@ -81,13 +112,6 @@ const Navbar = () => {
                 </button>
 
                 <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-                  {/* <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-gray-200 hover:bg-emerald-600 hover:text-white transition"
-                  >
-                    Profile
-                  </Link>
-                  */}
                   <Link
                     to="/orders"
                     className="block px-4 py-2 text-gray-200 hover:bg-emerald-600 hover:text-white transition"
