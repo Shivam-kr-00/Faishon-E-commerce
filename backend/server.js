@@ -37,9 +37,12 @@ app.use("/api/purchases", purchaseRoutes);
 const PORT = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === "production") {
+    // Serve static files from the React app
     app.use(express.static(path.join(__dirname, "/frontend/dist")));
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    
+    // Handle any requests that don't match the above
+    app.get("/*", (req, res) => {
+        res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
     });
 }
 
