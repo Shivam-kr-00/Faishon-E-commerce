@@ -63,7 +63,7 @@ const Navbar = () => {
               className="h-11 w-11 rounded-full shadow-md"
             />
             <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-red-500">
-              FaishonHub
+              FashionHub
             </span>
           </Link>
 
