@@ -31,7 +31,7 @@ app.use("/api/purchases", purchaseRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-// Serve React frontend in production
+// Serve React frontend in  production
 if (process.env.NODE_ENV === "production") {
     const frontendPath = path.join(__dirname, "frontend", "dist");
     app.use(express.static(frontendPath));
@@ -43,7 +43,11 @@ if (process.env.NODE_ENV === "production") {
 
 }
 
-app.listen(PORT, () => {
-    console.log("Server is running on http://localhost:" + PORT);
-    connectDB();
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("Server is running on http://localhost:" + PORT);
+    });
+}).catch((err) => {
+    console.error("DB connection failed:", err);
+    process.exit(1);
 });
