@@ -50,27 +50,30 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-transform duration-300 border-b border-emerald-800 ${
+      className={`fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-transform duration-300 border-b border-emerald-800 min-h-20 sm:min-h-24 ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="container mx-auto px-5 py-3">
-        <div className="flex flex-wrap justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
+      <div className="container mx-auto px-4 sm:px-3 py-4 sm:py-4">
+        <div className="flex justify-between items-center gap-2 sm:gap-4">
+          <Link
+            to="/"
+            className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0"
+          >
             <img
               src="https://res.cloudinary.com/dahpi68b7/image/upload/v1761414198/Screenshot_2025-10-25_230913_red3s0.png"
               alt="SFC Logo"
-              className="h-11 w-11 rounded-full shadow-md"
+              className="h-9 sm:h-11 w-9 sm:w-11 rounded-full shadow-md"
             />
-            <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-red-500">
+            <span className="text-lg sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-red-500">
               FashionHub
             </span>
           </Link>
 
-          <nav className="flex flex-wrap items-center gap-4">
+          <nav className="flex items-center gap-2 sm:gap-4">
             <Link
               to={"/"}
-              className="relative text-gray-300 hover:text-emerald-400 transition-colors duration-300 ease-in-out
+              className="relative text-gray-300 hover:text-emerald-400 transition-colors duration-300 ease-in-out text-sm sm:text-base
              after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-400
              after:transition-all after:duration-300 hover:after:w-full"
             >
@@ -80,10 +83,10 @@ const Navbar = () => {
             {user && (
               <Link
                 to={"/cart"}
-                className="relative group text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
+                className="relative group text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out text-sm sm:text-base"
               >
                 <ShoppingCart
-                  className="inline-block mr-1 group-hover:text-emerald-400"
+                  className="inline-block mr-0 sm:mr-1 group-hover:text-emerald-400"
                   size={20}
                 />
                 <span className="hidden sm:inline">Cart</span>
@@ -97,10 +100,10 @@ const Navbar = () => {
 
             {isAdmin && (
               <Link
-                className="bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center"
+                className="bg-emerald-700 hover:bg-emerald-600 text-white px-2 sm:px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center text-sm sm:text-base"
                 to={"/secret-dashboard"}
               >
-                <Lock className="inline-block mr-1" size={18} />
+                <Lock className="inline-block mr-0 sm:mr-1" size={18} />
                 <span className="hidden sm:inline">Dashboard</span>
               </Link>
             )}
@@ -130,17 +133,19 @@ const Navbar = () => {
               <>
                 <Link
                   to={"/signup"}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-2 sm:px-4 rounded-md flex items-center transition duration-300 ease-in-out"
+                  title="Sign Up"
                 >
-                  <UserPlus className="mr-2" size={18} />
-                  Sign Up
+                  <UserPlus className="mr-0 sm:mr-2" size={18} />
+                  <span className="hidden sm:inline">Sign Up</span>
                 </Link>
                 <Link
                   to={"/login"}
-                  className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out"
+                  className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-2 sm:px-4 rounded-md flex items-center transition duration-300 ease-in-out"
+                  title="Login"
                 >
-                  <LogIn className="mr-2" size={18} />
-                  Login
+                  <LogIn className="mr-0 sm:mr-2" size={18} />
+                  <span className="hidden sm:inline">Login</span>
                 </Link>
               </>
             )}

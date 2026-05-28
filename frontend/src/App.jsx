@@ -51,7 +51,7 @@ function App() {
 
       {/* Your page content will be rendered here based on the URL */}
       <ScrollToTop />
-      <main className="pt-16">
+      <main className="pt-20 sm:pt-24">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
